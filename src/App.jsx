@@ -3,6 +3,7 @@ import Header from './components/Header'
 import List from './components/List'
 import Footer from './components/Footer'
 import {nanoid} from 'nanoid'
+import axios from 'axios'
 import './App.css';
 
 
@@ -22,7 +23,7 @@ export default class App extends Component {
     this.setState({todos:newTodos})
   }
 
-  //  update todos when todoObj checked or unchecked
+  // update todos when todoObj checked or unchecked
   updateTodo = (id,done)=>{
     const{todos} = this.state
     const newTodos = todos.map((todoObj)=>{
@@ -59,6 +60,20 @@ export default class App extends Component {
     this.setState({todos:newTodos})
   }
 
+  getStudentData = ()=>{
+		axios.get('http://localhost:3000/api1/students').then(
+			response => {console.log('success',response.data);},
+			error => {console.log('fail',error);}
+		)
+	}
+
+	getCarData = ()=>{
+		axios.get('http://localhost:3000/api2/cars').then(
+			response => {console.log('success',response.data);},
+			error => {console.log('fail',error);}
+		)
+	}
+
   render(){
     const {todos} = this.state
     return(
@@ -67,6 +82,8 @@ export default class App extends Component {
           <Header addTodo = {this.addTodo}/>
           <List todos={todos} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo}/>
           <Footer todos={todos} checkAllTodo={this.checkAllTodo} ClearAllDone={this.ClearAllDone}/>
+          <button onClick={this.getStudentData}>students</button>
+          <button onClick={this.getCarData}>cars</button>
         </div>
       </div>
     )
