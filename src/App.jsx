@@ -1,49 +1,19 @@
 import React, { Component } from 'react'
-import {Route,Switch,Redirect} from 'react-router-dom'
-import Header from './components/Header'
-import Home from './pages/Home'
-import About from './pages/About'
-import MyNavLink from './components/MyNavLink'
+import { Button,DatePicker, Space } from 'antd'
+import {WechatOutlined,FacebookOutlined} from '@ant-design/icons';
 
+const { RangePicker } = DatePicker;
 
 export default class App extends Component {
-
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="col-xs-offset-2 col-xs-8">
-            <Header/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-2 col-xs-offset-2">
-            <div className="list-group">
-
-              {/* <a className="list-group-item active" href="./about.html">About</a>
-              <a className="list-group-item" href="./home.html">Home</a> */}
-                {/* <NavLink activeClassName='sv' className="list-group-item" to="/about">About</NavLink>
-                <NavLink activeClassName='sv' className="list-group-item" to="/home">Home</NavLink>  */}
-                
-                  <MyNavLink to="/about">About</MyNavLink>
-                  <MyNavLink to="/home">Home</MyNavLink>
-                
-            </div>
-          </div>
-          <div className="col-xs-6">
-            <div className="panel">
-              <div className="panel-body">
-                  <Switch>
-                    {/* <Route exact={true} path="/about" component={About}/>
-                    <Route exact={true} path="/home" component={Home}/> */}
-                    <Route path="/about" component={About}/>
-                    <Route path="/home" component={Home}/>
-                    <Redirect to="/about" />
-                  </Switch>
-              </div>
-            </div>
-          </div>
-        </div>
+        App
+        <button>Click</button>
+        <Button type="primary">Primary Button</Button>
+        <WechatOutlined />
+        <FacebookOutlined />
+        <RangePicker />
       </div>
     )
   }
